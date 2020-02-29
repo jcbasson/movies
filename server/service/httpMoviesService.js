@@ -3,7 +3,7 @@ const _ = require("lodash");
 
 const API_KEY = "8ce8325";
 const API_ENDPOINT = "http://www.omdbapi.com";
-//http://www.omdbapi.com/?i=Batman&page=2&apikey=8ce8325
+//http://www.omdbapi.com/?s=Batman&page=2&apikey=8ce8325
 //http://www.omdbapi.com/?i=tt4853102"&apikey=8ce8325
 
 const getMoviesByTitle = (title, page) =>

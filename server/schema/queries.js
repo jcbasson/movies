@@ -46,7 +46,16 @@ const MovieType = new GraphQLObjectType({
     BoxOffice: { type: GraphQLString },
     Production: { type: GraphQLString },
     Website: { type: GraphQLString },
-    Response: { type: GraphQLBoolean }
+    Response: { type: GraphQLString }
+  })
+});
+
+const MoviesType = new GraphQLObjectType({
+  name: "Movies",
+  fields: () => ({
+    Search: { type: new GraphQLNonNull(new GraphQLList(MovieType)) },
+    totalResults: { type: GraphQLString },
+    Response: { type: GraphQLString }
   })
 });
 
@@ -66,7 +75,7 @@ const RootQuery = new GraphQLObjectType({
       }
     },
     movies: {
-      type: new GraphQLNonNull(new GraphQLList(MovieType)),
+      type: MoviesType,
       args: { title: { type: GraphQLString }, page: { type: GraphQLInt } },
       resolve: async (parentValue, args) => {
         try {
