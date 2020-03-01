@@ -1,10 +1,13 @@
 import * as React from "react";
 import gql from "graphql-tag";
+import get from "lodash/get";
 import { useSelector } from "react-redux";
 import { useQuery } from "@apollo/react-hooks";
 import { movieFragment } from "./fragments";
 import { makeMovieTitlePageSelector } from "./selectors";
 import { IState } from "./types";
+import { Layout, LeftColumn, RightColumn } from "./styled";
+import MoviesList from "./components/movieList";
 
 export const GET_MOVIES_QUERY = gql`
   query movies($title: String, $page: Int) {
@@ -36,12 +39,15 @@ const Movies: React.FC<IMovies> = () => {
   //TODO: Implement proper error component
   if (error) return <h2>Error!</h2>;
 
-  console.log("data = ", data);
+  const movies = get(data, "movies.Search", []);
 
   return (
-    <>
-      <h1>Howzit</h1>
-    </>
+    <Layout>
+      <LeftColumn>
+        <MoviesList movies={movies} />
+      </LeftColumn>
+      <RightColumn></RightColumn>
+    </Layout>
   );
 };
 

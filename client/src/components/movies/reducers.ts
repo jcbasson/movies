@@ -13,11 +13,11 @@ const defaultState = {
 export const moviesReducer = (state = defaultState, action: any) => {
   switch (action.type) {
     case SET_SELECTED_MOVIE_ID:
-      return { ...state };
+      return { ...state, selectedId: action.id };
     case SET_SEARCHED_MOVIE_TITLE:
-      return { ...state };
+      return { ...state, searchedTitle: action.title };
     case SET_MOVIES_PAGE_NUMBER:
-      return { ...state };
+      return { ...state, page: action.page };
     default:
       return state;
   }

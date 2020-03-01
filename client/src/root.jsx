@@ -3,6 +3,7 @@ import { getRoutes } from "./routeConfig";
 import { BrowserRouter as Router } from "react-router-dom";
 import SwitchRoutes from "./components/routes/switchRoutes";
 import YingYangTheme from "./themes/yingyangTheme";
+import "./reset.css";
 
 const Root = () => (
   <Router>

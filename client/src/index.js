@@ -6,7 +6,6 @@ import Root from "./root";
 import { Provider } from "react-redux";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import store from "./store";
-import "./reset.css";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",

@@ -8,6 +8,18 @@ export interface IState {
   };
 }
 
+export interface IMovieData {
+  imdbID: string;
+  Title: string;
+  Year: string;
+  Runtime: string;
+  Genre: string;
+  Director: string;
+  Actors: string;
+  Plot: string;
+  Language: string;
+}
+
 export type SetSelectedMovieId = (id: string) => { type: string; id: string };
 
 export type SetSearchedMovieTitle = (
@@ -26,6 +38,4 @@ export type MovieTitleSelector = (state: IState) => string;
 
 export type MoviePageNumSelector = (state: IState) => number;
 
-// export type GenerateGlobalWarmingBarsData = (
-//   dispatch: Dispatch
-// ) => (globalWarmingLevels) => null
+export type MovieIdSelector = (state: IState) => string;

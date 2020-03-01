@@ -1,5 +1,9 @@
 import { createSelector } from "reselect";
-import { MovieTitleSelector, MoviePageNumSelector } from "./types";
+import {
+  MovieTitleSelector,
+  MoviePageNumSelector,
+  MovieIdSelector
+} from "./types";
 import get from "lodash/get";
 
 export const makeMovieTitlePageSelector = () =>
@@ -12,8 +16,11 @@ export const makeMovieTitlePageSelector = () =>
     })
   );
 
-const movieTitleSelector: MovieTitleSelector = state =>
+export const movieTitleSelector: MovieTitleSelector = state =>
   get(state, "movies.searchedTitle", "");
 
-const moviePageNumSelector: MoviePageNumSelector = state =>
+export const moviePageNumSelector: MoviePageNumSelector = state =>
   get(state, "movies.page", "");
+
+export const movieIdSelector: MovieIdSelector = state =>
+  get(state, "movies.selectedId", "");
