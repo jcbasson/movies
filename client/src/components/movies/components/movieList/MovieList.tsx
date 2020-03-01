@@ -27,20 +27,14 @@ export const GET_MOVIES_QUERY = gql`
 
 interface IMovieList {
   defaultMovieTitle?: string;
-  defaultPage?: number;
 }
 
-const MovieList: React.FC<IMovieList> = ({
-  defaultMovieTitle,
-  defaultPage
-}) => {
+const MovieList: React.FC<IMovieList> = ({ defaultMovieTitle }) => {
   const dispatch = useDispatch();
   const movieTitlePageSelector = React.useMemo(makeMovieTitlePageSelector, []);
   const { title, page } = useSelector((state: IState) =>
     movieTitlePageSelector(state)
   );
-  console.log("title defaultTitle", title, defaultMovieTitle);
-  console.log("page defaultPage", page, defaultPage);
   const { loading, error, data } = useQuery(GET_MOVIES_QUERY, {
     variables: {
       title: isEmpty(title) ? defaultMovieTitle : title,
@@ -63,6 +57,7 @@ const MovieList: React.FC<IMovieList> = ({
     <Layout>
       {duplicateFreeMovies.map((movie: IMovieData) => (
         <MovieItem
+          key={get(movie, "imdbID", "")}
           imdbID={get(movie, "imdbID", "")}
           title={get(movie, "Title", "")}
           year={get(movie, "Year", "")}

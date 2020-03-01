@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import get from "lodash/get";
 
 export const Layout = styled.div`
@@ -13,21 +13,42 @@ export const Layout = styled.div`
   }
 `;
 
-export const LeftColumn = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+export const LeftColumn = styled.div<{ hasMovieSelected: boolean }>`
   height: 100%;
   border-right: 1px solid ${({ theme }) => get(theme, "colors.primary", "")};
   padding: 10px;
   @media (min-width: 426px) {
     width: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
+  ${({ hasMovieSelected }) =>
+    hasMovieSelected
+      ? css`
+          display: none;
+        `
+      : css`
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 100%;
+        `}
 `;
 
-export const RightColumn = styled.div`
+export const RightColumn = styled.div<{ hasMovieSelected: boolean }>`
   height: 100%;
+  ${({ hasMovieSelected }) =>
+    hasMovieSelected
+      ? css`
+          width: 100%;
+        `
+      : css`
+          display: none;
+        `}
+  @media (min-width: 426px) {
+    width: 67%;
+  }
 `;
 
 export const Content = styled.div`
