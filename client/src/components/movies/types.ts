@@ -21,7 +21,9 @@ export interface IMovieData {
   Language: string;
 }
 
-export type SetSelectedMovieId = (id: string) => { type: string; id: string };
+export type SetSelectedMovieId = (
+  id: string | null
+) => { type: string; id: string | null };
 
 export type SetSearchedMovieTitle = (
   title: string

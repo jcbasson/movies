@@ -29,24 +29,12 @@ const MovieType = new GraphQLObjectType({
     Runtime: { type: GraphQLString },
     Genre: { type: GraphQLString },
     Director: { type: GraphQLString },
-    Writer: { type: GraphQLString },
     Actors: { type: GraphQLString },
     Plot: { type: GraphQLString },
     Language: { type: GraphQLString },
-    Country: { type: GraphQLString },
-    Awards: { type: GraphQLString },
     Poster: { type: GraphQLString },
-    Ratings: { type: new GraphQLNonNull(new GraphQLList(RatingType)) },
-    Metascore: { type: GraphQLString },
-    imdbRating: { type: GraphQLString },
-    imdbVotes: { type: GraphQLString },
     imdbID: { type: GraphQLString },
-    Type: { type: GraphQLString },
-    DVD: { type: GraphQLString },
-    BoxOffice: { type: GraphQLString },
-    Production: { type: GraphQLString },
-    Website: { type: GraphQLString },
-    Response: { type: GraphQLString }
+    Type: { type: GraphQLString }
   })
 });
 
