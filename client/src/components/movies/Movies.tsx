@@ -1,6 +1,7 @@
 import * as React from "react";
 import gql from "graphql-tag";
 import get from "lodash/get";
+import isEmpty from "lodash/isEmpty";
 import { useSelector } from "react-redux";
 import { useQuery } from "@apollo/react-hooks";
 import { movieFragment } from "./fragments";
@@ -22,16 +23,22 @@ export const GET_MOVIES_QUERY = gql`
   ${movieFragment.movie}
 `;
 
-interface IMovies {}
+interface IMovies {
+  defaultMovieTitle?: string;
+  defaultPage?: number;
+}
 
-const Movies: React.FC<IMovies> = () => {
+const Movies: React.FC<IMovies> = ({ defaultMovieTitle, defaultPage }) => {
   const movieTitlePageSelector = React.useMemo(makeMovieTitlePageSelector, []);
   const { title, page } = useSelector((state: IState) =>
     movieTitlePageSelector(state)
   );
 
   const { loading, error, data } = useQuery(GET_MOVIES_QUERY, {
-    variables: { title, page }
+    variables: {
+      title: isEmpty(title) ? defaultMovieTitle : title,
+      page: isEmpty(page) ? defaultPage : page
+    }
   });
 
   //TODO: Implement proper placeholder to display while waiting for data

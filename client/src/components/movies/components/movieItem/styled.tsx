@@ -4,7 +4,6 @@ import get from "lodash/get";
 export const Layout = styled.div`
   border: 1px solid ${({ theme }) => get(theme, "colors.primary", "")};
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   padding: 5px;
   height: 80px;
@@ -15,10 +14,15 @@ export const Layout = styled.div`
   }
 `;
 
-export const LayoutHeader = styled.div`
-  width: 100%;
+export const LeftColumn = styled.div`
   display: flex;
-  justify-content: space-between;
+`;
+
+export const RightColumn = styled.div`
+  width: 10%;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
 `;
 
 export const MovieTitle = styled.span`
@@ -35,6 +39,6 @@ export const MovieYear = styled.span`
 `;
 
 export const MovieStar = styled.img`
-  width: 10%;
+  width: 100%;
   height: 100%;
 `;

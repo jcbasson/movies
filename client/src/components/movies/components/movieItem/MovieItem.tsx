@@ -2,7 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Layout,
-  LayoutHeader,
+  LeftColumn,
+  RightColumn,
   MovieTitle,
   MovieYear,
   MovieStar
@@ -27,11 +28,13 @@ const MovieItem: React.FC<IMovieItem> = ({ imdbID, title, year }) => {
   );
   return (
     <Layout onClick={clickHandler}>
-      <LayoutHeader>
+      <LeftColumn>
         <MovieTitle>{title}</MovieTitle>
+      </LeftColumn>
+      <RightColumn>
+        <MovieYear>{year}</MovieYear>
         {imdbID === selectedId && <MovieStar src={startIcon}></MovieStar>}
-      </LayoutHeader>
-      <MovieYear>{year}</MovieYear>
+      </RightColumn>
     </Layout>
   );
 };
