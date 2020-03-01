@@ -6,7 +6,7 @@ export const Layout = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 5px;
-  height: 80px;
+  height: 9%;
   cursor: pointer;
   outline: none !important;
   &:hover {
@@ -19,10 +19,11 @@ export const LeftColumn = styled.div`
 `;
 
 export const RightColumn = styled.div`
-  width: 10%;
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
+  width: 50px;
+  justify-content: space-between;
 `;
 
 export const MovieTitle = styled.span`
@@ -40,5 +41,9 @@ export const MovieYear = styled.span`
 
 export const MovieStar = styled.img`
   width: 100%;
-  height: 100%;
+  height: 70%;
+
+  @media (min-width: 426px) {
+    height: 75%;
+  }
 `;

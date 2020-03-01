@@ -3,7 +3,6 @@ import {
   SET_SEARCHED_MOVIE_TITLE,
   SET_MOVIES_PAGE_NUMBER
 } from "./actions";
-import { IState } from "./types";
 
 const defaultState = {
   selectedId: null,

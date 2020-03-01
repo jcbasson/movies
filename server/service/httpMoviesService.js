@@ -9,7 +9,9 @@ const API_ENDPOINT = "http://www.omdbapi.com";
 const getMoviesByTitle = (title, page) =>
   new Promise((resolve, reject) =>
     axios
-      .get(`${API_ENDPOINT}/?s=${title}&page=${page}&apikey=${API_KEY}`)
+      .get(
+        `${API_ENDPOINT}/?type=movie&s=${title}&page=${page}&apikey=${API_KEY}`
+      )
       .then(response => resolve(_.get(response, "data")))
       .catch(error => {
         reject(error);
@@ -19,7 +21,7 @@ const getMoviesByTitle = (title, page) =>
 const getMovieById = id =>
   new Promise((resolve, reject) =>
     axios
-      .get(`${API_ENDPOINT}/?i=${id}&apikey=${API_KEY}`)
+      .get(`${API_ENDPOINT}/?type=movie&i=${id}&apikey=${API_KEY}`)
       .then(response => resolve(_.get(response, "data")))
       .catch(error => {
         reject(error);

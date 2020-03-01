@@ -15,9 +15,12 @@ export const Layout = styled.div`
 
 export const LeftColumn = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100%;
   border-right: 1px solid ${({ theme }) => get(theme, "colors.primary", "")};
-
+  padding: 10px;
   @media (min-width: 426px) {
     width: 33%;
   }

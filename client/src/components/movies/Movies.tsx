@@ -9,6 +9,7 @@ import { makeMovieTitlePageSelector } from "./selectors";
 import { IState } from "./types";
 import { Layout, LeftColumn, RightColumn } from "./styled";
 import MoviesList from "./components/movieList";
+import MovieSearchBar from "./components/movieSearchBar";
 
 export const GET_MOVIES_QUERY = gql`
   query movies($title: String, $page: Int) {
@@ -51,6 +52,7 @@ const Movies: React.FC<IMovies> = ({ defaultMovieTitle, defaultPage }) => {
   return (
     <Layout>
       <LeftColumn>
+        <MovieSearchBar></MovieSearchBar>
         <MoviesList movies={movies} />
       </LeftColumn>
       <RightColumn></RightColumn>
