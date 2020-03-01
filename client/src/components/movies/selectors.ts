@@ -2,7 +2,8 @@ import { createSelector } from "reselect";
 import {
   MovieTitleSelector,
   MoviePageNumSelector,
-  MovieIdSelector
+  MovieIdSelector,
+  MovieTotalResultsSelector
 } from "./types";
 import get from "lodash/get";
 
@@ -24,3 +25,6 @@ export const moviePageNumSelector: MoviePageNumSelector = state =>
 
 export const movieIdSelector: MovieIdSelector = state =>
   get(state, "movies.selectedId", "");
+
+export const movieTotalResultsSelector: MovieTotalResultsSelector = state =>
+  get(state, "movies.totalResults", 0);

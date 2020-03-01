@@ -5,6 +5,7 @@ export interface IState {
     selectedId: string;
     searchedTitle: string;
     page: number;
+    totalResults: number;
   };
 }
 
@@ -30,9 +31,15 @@ export type SetMoviesPageNumber = (
   page: number
 ) => { type: string; page: number };
 
+export type SetMovieTotalResults = (
+  totalResults: number
+) => { type: string; totalResults: number };
+
 export type MovieTitleAndPageNumSelector = (
   state: IState
 ) => { id: string; page: number };
+
+export type MovieTotalResultsSelector = (state: IState) => number;
 
 export type MovieTitleSelector = (state: IState) => string;
 

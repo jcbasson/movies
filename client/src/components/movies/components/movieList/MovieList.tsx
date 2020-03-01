@@ -3,13 +3,14 @@ import gql from "graphql-tag";
 import get from "lodash/get";
 import isEmpty from "lodash/isEmpty";
 import uniqBy from "lodash/uniqBy";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useQuery } from "@apollo/react-hooks";
 import { movieFragment } from "../../fragments";
 import { Layout } from "./styled";
 import MovieItem from "../movieItem";
 import { makeMovieTitlePageSelector } from "../../selectors";
 import { IState, IMovieData } from "../../types";
+import { setMovieTotalResults } from "../../actions";
 
 export const GET_MOVIES_QUERY = gql`
   query movies($title: String, $page: Int) {
@@ -33,6 +34,7 @@ const MovieList: React.FC<IMovieList> = ({
   defaultMovieTitle,
   defaultPage
 }) => {
+  const dispatch = useDispatch();
   const movieTitlePageSelector = React.useMemo(makeMovieTitlePageSelector, []);
   const { title, page } = useSelector((state: IState) =>
     movieTitlePageSelector(state)
@@ -49,6 +51,8 @@ const MovieList: React.FC<IMovieList> = ({
 
   // @ts-ignore
   const duplicateFreeMovies = uniqBy(movies, "imdbID") as IMovieData[];
+
+  dispatch(setMovieTotalResults(Number(get(data, "movies.totalResults", 0))));
 
   return (
     <Layout>
