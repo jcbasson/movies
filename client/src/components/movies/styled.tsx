@@ -5,7 +5,6 @@ export const Layout = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
-  border: 1px solid ${({ theme }) => get(theme, "colors.primary", "")};
   background-color: ${({ theme }) => get(theme, "colors.background", "")};
   * {
     color: ${({ theme }) => get(theme, "colors.primary", "")};

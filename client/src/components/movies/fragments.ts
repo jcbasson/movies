@@ -12,6 +12,7 @@ export const movieFragment = {
       Actors
       Plot
       Language
+      Poster
     }
   `
 };
