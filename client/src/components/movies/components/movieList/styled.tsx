@@ -5,5 +5,7 @@ export const Layout = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  > div {
+    margin-bottom: 5px;
+  }
 `;

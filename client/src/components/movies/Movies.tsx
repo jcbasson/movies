@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Layout, LeftColumn, RightColumn } from "./styled";
+import { Layout, LeftColumn, RightColumn, Content } from "./styled";
 import MoviesList from "./components/movieList";
 import MovieSearchBar from "./components/movieSearchBar";
 import MoviePager from "./components/moviePager";
@@ -14,7 +14,9 @@ const Movies: React.FC<IMovies> = props => {
     <Layout>
       <LeftColumn>
         <MovieSearchBar></MovieSearchBar>
-        <MoviesList {...props} />
+        <Content>
+          <MoviesList {...props} />
+        </Content>
         <MoviePager />
       </LeftColumn>
       <RightColumn></RightColumn>

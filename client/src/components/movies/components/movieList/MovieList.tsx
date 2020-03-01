@@ -7,14 +7,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { useQuery } from "@apollo/react-hooks";
 import { movieFragment } from "../../fragments";
 import { Layout } from "./styled";
-import MovieItem from "../movieItem";
 import { makeMovieTitlePageSelector } from "../../selectors";
 import { IState, IMovieData } from "../../types";
 import { setMovieTotalResults } from "../../actions";
+import MovieItem from "../movieItem";
 
 export const GET_MOVIES_QUERY = gql`
-  query movies($title: String, $page: Int) {
-    movies(title: $title, page: $page) {
+  query movies($page: Int, $title: String) {
+    movies(page: $page, title: $title) {
       Search {
         ...Movie
       }
@@ -39,15 +39,20 @@ const MovieList: React.FC<IMovieList> = ({
   const { title, page } = useSelector((state: IState) =>
     movieTitlePageSelector(state)
   );
+  console.log("title defaultTitle", title, defaultMovieTitle);
+  console.log("page defaultPage", page, defaultPage);
   const { loading, error, data } = useQuery(GET_MOVIES_QUERY, {
     variables: {
       title: isEmpty(title) ? defaultMovieTitle : title,
-      page: isEmpty(page) ? defaultPage : page
+      page: page
     }
   });
   const movies = get(data, "movies.Search", []);
 
-  if (loading || error || isEmpty(movies)) return null;
+  if (loading || error || isEmpty(movies)) {
+    dispatch(setMovieTotalResults(0));
+    return null;
+  }
 
   // @ts-ignore
   const duplicateFreeMovies = uniqBy(movies, "imdbID") as IMovieData[];

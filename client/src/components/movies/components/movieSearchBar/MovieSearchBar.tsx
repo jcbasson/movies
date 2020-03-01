@@ -1,16 +1,20 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, batch } from "react-redux";
 import debounce from "lodash/debounce";
 import get from "lodash/get";
 import { SearchBox, Container } from "./styled";
-import { setSearchedMovieTitle } from "../../actions";
+import { setSearchedMovieTitle, setMoviesPageNumber } from "../../actions";
 
 interface IMovieSearchBar {}
 
 const MovieSearchBar: React.FC<IMovieSearchBar> = () => {
   const dispatch = useDispatch();
   const searchMovieHandler = debounce(searchText => {
-    dispatch(setSearchedMovieTitle(searchText));
+    batch(() => {
+      dispatch(setSearchedMovieTitle(searchText));
+      // Initialize the page to 1 for new title search
+      dispatch(setMoviesPageNumber(1));
+    });
   }, 500);
   const onChangeHandler = (event: any) => {
     const movieSearchText = get(event, "target.value", "");
