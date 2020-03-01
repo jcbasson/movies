@@ -5,7 +5,7 @@ export const Layout = styled.div`
   border: 1px solid ${({ theme }) => get(theme, "colors.primary", "")};
   display: flex;
   justify-content: space-between;
-  padding: 5px;
+  padding: 10px 5px 5px 15px;
   height: 9%;
   cursor: pointer;
   outline: none !important;

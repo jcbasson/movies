@@ -2,7 +2,7 @@ import styled from "styled-components";
 import get from "lodash/get";
 
 export const Container = styled.div`
-  height: 100px;
+  height: 120px;
   display: flex;
   align-items: center;
 `;

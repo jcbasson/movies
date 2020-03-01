@@ -24,7 +24,7 @@ const MovieItem: React.FC<IMovieItem> = ({ imdbID, title, year }) => {
   const dispatch = useDispatch();
   const clickHandler = React.useCallback(
     () => dispatch(setSelectedMovieId(imdbID)),
-    [dispatch]
+    []
   );
   return (
     <Layout onClick={clickHandler}>
