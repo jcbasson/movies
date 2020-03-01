@@ -27,7 +27,7 @@ export const RightColumn = styled.div`
   }
 `;
 
-export const MovieTitle = styled.h1`
+export const MovieTitle = styled.span`
   font-weight: bold;
   font-size: 45px;
   text-align: center;

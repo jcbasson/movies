@@ -29,7 +29,7 @@ export const GET_MOVIE_QUERY = gql`
   ${movieFragment.movie}
 `;
 
-interface IMovieInfo {}
+export interface IMovieInfo {}
 
 const MovieInfo: React.FC<IMovieInfo> = () => {
   const selectedId = useSelector((state: IState) => movieIdSelector(state));
