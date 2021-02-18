@@ -8,6 +8,7 @@
 4. Navigate to client in the root folder
 5. Run yarn
 6. Run yarn start
+7. Navigate to /movies
 
 ## Assumptions and key points
 
